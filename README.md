@@ -1,5 +1,7 @@
 # docr
 
+![CI](https://github.com/marghidanu/docr/workflows/CI/badge.svg)
+
 TODO: Write a description here
 
 ## Installation
