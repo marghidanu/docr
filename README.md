@@ -36,18 +36,19 @@ TODO: Write development instructions here
 * [x] ContainerCreate
 * [x] ContainerInspect
 * [~] ContainerTop
-* [ ] ContainerLogs
-* [ ] ContainerChanges
+* [x] ContainerLogs
+* [x] ContainerChanges
 * [ ] ContainerStats
-* [ ] ContainerStart
-* [ ] ContainerStop
-* [ ] ContainerRestart
-* [ ] ContainerKill
+* [x] ContainerStart
+* [x] ContainerStop
+* [x] ContainerRestart
+* [x] ContainerKill
 * [ ] ContainerUpdate
 * [ ] ContainerRename
-* [ ] ContainerPause
+* [x] ContainerPause
+* [x] ContainerUnpause
 * [ ] ContainerAttach
-* [ ] ContainerWait
+* [x] ContainerWait
 * [x] ContainerDelete
 
 ### Images
