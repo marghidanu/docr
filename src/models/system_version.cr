@@ -60,7 +60,7 @@ module Docr::Models
 
     # Indicates if the daemon is started with experimental features enabled.
     @[JSON::Field(key: "Experimental")]
-    property experimental : Bool
+    property experimental : Bool?
 
     # The date and time that the daemon was compiled.
     @[JSON::Field(key: "BuildTime")]
