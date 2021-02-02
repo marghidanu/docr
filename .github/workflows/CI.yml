@@ -9,14 +9,19 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-
-    container:
-      image: crystallang/crystal
+    runs-on: ubuntu-20.04
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec
+      - name: Install Crystal
+        uses: oprypin/install-crystal@v1
+        with:
+          crystal: 0.36.0
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: shards install
+
+      - name: Run tests
+        run: crystal spec
