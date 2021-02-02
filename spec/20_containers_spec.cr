@@ -14,8 +14,8 @@ describe "Containers" do
   end
 
   it "should inspect container" do
-    result = api.inspect("abc")
-    pp result
+    _ = api.inspect("abc")
+    # pp result
   end
 
   # it "should display running processes inside the container" do
