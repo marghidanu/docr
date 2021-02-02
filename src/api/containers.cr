@@ -14,7 +14,6 @@ module Docr::API
       #   "size"    => [size.to_s],
       #   "filters" => [filters.to_json],
       # }
-      # pp params.to_s
 
       @client.call("GET", "/containers/json") do |response|
         body = response.body_io.gets_to_end
@@ -23,13 +22,18 @@ module Docr::API
     end
 
     def create(name : String, config : Docr::Models::ContainerConfig)
+      params = URI::Params{
+        "name" => [name],
+      }
+
       headers = HTTP::Headers{
         "Content-Type" => "application/json",
       }
+      payload = config.to_json
 
-      @client.call("POST", "/containers/create", headers, config.to_json) do |response|
-        _ = response.body_io.gets_to_end
-        return nil
+      @client.call("POST", "/containers/create?#{params}", headers, payload) do |response|
+        body = response.body_io.gets_to_end
+        return Docr::Models::ContainerCreateResponse.from_json(body)
       end
     end
 
@@ -44,6 +48,18 @@ module Docr::API
       @client.call("GET", "/containers/#{id}/top") do |response|
         body = response.body_io.gets_to_end
         return Docr::Models::ContainerTopResponse.from_json(body)
+      end
+    end
+
+    def delete(id : String, volumes = false, force = false, link = false)
+      params = URI::Params{
+        "v"     => [volumes.to_s],
+        "force" => [force.to_s],
+        "link"  => [link.to_s],
+      }
+
+      @client.call("DELETE", "/containers/#{id}?#{params}") do |response|
+        response.consume_body_io
       end
     end
   end

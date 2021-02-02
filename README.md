@@ -32,10 +32,10 @@ TODO: Write development instructions here
 
 ### Containers
 
-* [ ] ContainerList
-* [ ] ContainerCreate
-* [ ] ContainerInspect
-* [ ] ContainerTop
+* [x] ContainerList
+* [x] ContainerCreate
+* [x] ContainerInspect
+* [~] ContainerTop
 * [ ] ContainerLogs
 * [ ] ContainerChanges
 * [ ] ContainerStats
@@ -48,13 +48,13 @@ TODO: Write development instructions here
 * [ ] ContainerPause
 * [ ] ContainerAttach
 * [ ] ContainerWait
-* [ ] ContainerDelete
+* [x] ContainerDelete
 
 ### Images
 
 * [x] ImageList
 * [ ] ImageBuild
-* [ ] ImageCreate
+* [x] ImageCreate
 * [x] ImageInspect
 * [x] ImageHistory
 * [~] ImagePush
