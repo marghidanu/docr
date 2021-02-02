@@ -16,8 +16,15 @@ module Docr::API
       # TODO: Implement this!
     end
 
-    def create
-      # TODO: Implement this!
+    def create(image : String, tag : String = "latest")
+      params = URI::Params{
+        "fromImage" => [image],
+        "tag"       => [tag],
+      }
+
+      @client.call("POST", "/images/create?#{params}") do |response|
+        response.consume_body_io
+      end
     end
 
     def inspect(name : String) : Docr::Models::Image
@@ -34,22 +41,22 @@ module Docr::API
       end
     end
 
-    def push(name : String, tag : String, auth : String) : Bool
+    def push(name : String, tag : String, auth : String)
       # headers = HTTP::Headers {}
 
       @client.call("POST", "/images/#{name}/push") do
-        return true
+        response.consume_body_io
       end
     end
 
-    def tag(name : String, repo : String, tag : String) : Bool
+    def tag(name : String, repo : String, tag : String)
       params = URI::Params{
         "repo" => [repo],
         "tag"  => [tag],
       }
 
-      @client.call("POST", "/images/#{name}/tag?#{params}") do
-        return true
+      @client.call("POST", "/images/#{name}/tag?#{params}") do |response|
+        response.consume_body_io
       end
     end
 

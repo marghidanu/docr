@@ -33,9 +33,9 @@ module Docr::API
     end
 
     # Remove a volume
-    def delete(name : String, force : Bool = false) : Bool
-      @client.call("DELETE", "/volumes/#{name}") do
-        return true
+    def delete(name : String, force : Bool = false)
+      @client.call("DELETE", "/volumes/#{name}") do |response|
+        response.consume_body_io
       end
     end
   end

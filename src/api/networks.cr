@@ -37,9 +37,9 @@ module Docr::API
       # TODO: Implement this
     end
 
-    def delete(id : String) : Bool
-      @client.call("DELETE", "/networks/#{id}") do
-        return true
+    def delete(id : String)
+      @client.call("DELETE", "/networks/#{id}") do |response|
+        response.consume_body_io
       end
     end
   end
