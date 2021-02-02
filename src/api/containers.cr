@@ -28,7 +28,7 @@ module Docr::API
       }
 
       @client.call("POST", "/containers/create", headers, config.to_json) do |response|
-        body = response.body_io.gets_to_end
+        _ = response.body_io.gets_to_end
         return nil
       end
     end

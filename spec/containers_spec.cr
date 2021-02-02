@@ -1,7 +1,7 @@
 require "./spec_helper"
 
 client = Docr::Client.new
-api = Docr::API::Containers.new(client)
+_ = Docr::API::Containers.new(client)
 
 describe "Containers" do
   # it "should list all containers" do

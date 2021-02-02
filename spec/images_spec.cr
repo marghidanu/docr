@@ -1,7 +1,7 @@
 require "./spec_helper"
 
 client = Docr::Client.new
-api = Docr::API::Images.new(client)
+_ = Docr::API::Images.new(client)
 
 describe "Images" do
   # it "should list all images" do

@@ -19,7 +19,7 @@ module Docr::API
     # Get system information
     def info
       @client.call("GET", "/info") do |response|
-        body = response.body_io.gets_to_end
+        _ = response.body_io.gets_to_end
         return nil
       end
     end

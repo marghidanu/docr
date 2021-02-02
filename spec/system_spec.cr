@@ -30,6 +30,6 @@ describe "System" do
   end
 
   it "should retrieve system events" do
-    stream = api.events
+    _ = api.events
   end
 end
