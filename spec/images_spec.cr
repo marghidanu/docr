@@ -1,27 +1,27 @@
 require "./spec_helper"
 
 client = Docr::Client.new
-api = Docr::API::Images.new(client)
+images = Docr::API::Images.new(client)
 
 describe "Images" do
   it "should retrieve an image" do
-    api.create("busybox")
+    images.create("busybox")
   end
 
   it "should list all images" do
-    _ = api.list
+    _ = images.list
   end
 
   it "should inspect an image" do
-    _ = api.inspect("busybox:latest")
+    _ = images.inspect("busybox:latest")
   end
 
   it "should retrieve image history" do
-    _ = api.history("busybox:latest")
+    _ = images.history("busybox:latest")
   end
 
   it "should tag an image" do
-    _ = api.tag(
+    _ = images.tag(
       name: "busybox:latest",
       repo: "local/busybox",
       tag: "latest"
@@ -29,6 +29,6 @@ describe "Images" do
   end
 
   it "should delete an image" do
-    _ = api.delete("local/busybox:latest")
+    _ = images.delete("local/busybox:latest")
   end
 end

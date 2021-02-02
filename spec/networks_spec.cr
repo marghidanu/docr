@@ -1,13 +1,13 @@
 require "./spec_helper"
 
 client = Docr::Client.new
-api = Docr::API::Networks.new(client)
+networks = Docr::API::Networks.new(client)
 
 id : String? = nil
 
 describe "Networks" do
   it "should list all networks" do
-    _ = api.list
+    _ = networks.list
   end
 
   it "should create a network" do
@@ -15,15 +15,15 @@ describe "Networks" do
       name: "test"
     )
 
-    result = api.create(config)
+    result = networks.create(config)
     id = result.id
   end
 
   it "should inspect a network" do
-    _ = api.inspect(id.to_s)
+    _ = networks.inspect(id.to_s)
   end
 
   it "should delete the network" do
-    _ = api.delete(id.to_s)
+    _ = networks.delete(id.to_s)
   end
 end

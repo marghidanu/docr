@@ -1,7 +1,7 @@
 require "./spec_helper"
 
 client = Docr::Client.new
-api = Docr::API::Volumes.new(client)
+volumes = Docr::API::Volumes.new(client)
 
 describe "Volumes" do
   it "should create volume" do
@@ -10,18 +10,18 @@ describe "Volumes" do
       driver: "local",
     )
 
-    _ = api.create(config)
+    _ = volumes.create(config)
   end
 
   it "should list all volumes" do
-    _ = api.list
+    _ = volumes.list
   end
 
   it "should retrieve inspect volume" do
-    _ = api.inspect("test")
+    _ = volumes.inspect("test")
   end
 
   it "should remove volume" do
-    _ = api.delete("test")
+    _ = volumes.delete("test")
   end
 end
