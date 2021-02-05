@@ -9,6 +9,7 @@ module Docr
     getter networks : Docr::Endpoints::Networks
     getter volumes : Docr::Endpoints::Volumes
     getter sys : Docr::Endpoints::System
+    getter exec : Docr::Endpoints::Exec
 
     def initialize(@client)
       @images = Docr::Endpoints::Images.new(client)
@@ -16,6 +17,7 @@ module Docr
       @networks = Docr::Endpoints::Networks.new(client)
       @volumes = Docr::Endpoints::Volumes.new(client)
       @sys = Docr::Endpoints::System.new(client)
+      @exec = Docr::Endpoints::Exec.new(client)
     end
   end
 end

@@ -80,9 +80,9 @@ TODO: Write development instructions here
 
 ### Exec
 
-* [ ] ContainerExec
-* [ ] ExecStart
-* [ ] ExecInspect
+* [x] ContainerExec
+* [x] ExecStart
+* [x] ExecInspect
 
 ### System
 
