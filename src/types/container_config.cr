@@ -37,6 +37,9 @@ module Docr::Types
     @[JSON::Field(key: "Cmd")]
     property cmd : Array(String)?
 
+    @[JSON::Field(key: "Healthcheck")]
+    property healthcheck : Docr::Types::HealthConfig?
+
     @[JSON::Field(key: "ArgsEscaped")]
     property args_escaped : Bool?
 
@@ -82,6 +85,7 @@ module Docr::Types
       @stdin_once = false,
       @env = nil,
       @cmd = nil,
+      @healthcheck = nil,
       @args_escaped = nil,
       @image = nil,
       @working_dir = nil,
@@ -105,8 +109,6 @@ end
 #       enum:
 #         - {}
 #       default: {}
-#   Healthcheck:
-#     $ref: "#/definitions/HealthConfig"
 #   Volumes:
 #     type: "object"
 #     additionalProperties:

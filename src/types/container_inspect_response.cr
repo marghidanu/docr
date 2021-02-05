@@ -56,25 +56,27 @@ module Docr::Types
     property app_armor_profile : String
 
     @[JSON::Field(key: "ExecIDs")]
-    property exec_i_ds : Array(String)?
+    property exec_ids : Array(String)?
+
+    @[JSON::Field(key: "GraphDriver")]
+    property graph_driver : Docr::Types::GraphDriverData
 
     @[JSON::Field(key: "SizeRw")]
     property size_rw : Int64?
 
     @[JSON::Field(key: "SizeRootFs")]
     property size_root_fs : Int64?
+
+    @[JSON::Field(key: "Config")]
+    property config : Docr::Types::ContainerConfig
   end
 end
 
 # HostConfig:
 # $ref: "#/definitions/HostConfig"
-# GraphDriver:
-# $ref: "#/definitions/GraphDriverData"
 # Mounts:
 # type: "array"
 # items:
 #   $ref: "#/definitions/MountPoint"
-# Config:
-# $ref: "#/definitions/ContainerConfig"
 # NetworkSettings:
 # $ref: "#/definitions/NetworkSettings"
