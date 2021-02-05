@@ -2,7 +2,15 @@
 
 ![CI](https://github.com/marghidanu/docr/workflows/CI/badge.svg)
 
-TODO: Write a description here
+Docker client for Crystal.
+
+This is still work in progress:
+
+* [ ] Test all endpoint functions
+* [ ] Make sure models are complete
+* [ ] Extend client to support calls over network
+
+PRs are always welcome!
 
 ## Installation
 
@@ -21,8 +29,6 @@ TODO: Write a description here
 ```crystal
 require "docr"
 ```
-
-TODO: Write usage instructions here
 
 ## Development
 
