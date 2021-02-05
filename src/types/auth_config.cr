@@ -16,7 +16,12 @@ module Docr::Types
     @[JSON::Field(key: "serveraddress")]
     property serveraddress : String
 
-    def initialize(@username, @password, @email, @serveraddress)
+    def initialize(
+      @username,
+      @password,
+      @email,
+      @serveraddress
+    )
     end
   end
 end

@@ -20,7 +20,12 @@ module Docr::Types
     @[JSON::Field(key: "Labels")]
     property labels : Hash(String, String)?
 
-    def initialize(@name, @driver = "local", @driver_opts = nil, @labels = nil)
+    def initialize(
+      @name,
+      @driver = "local",
+      @driver_opts = nil,
+      @labels = nil
+    )
     end
   end
 end

@@ -44,7 +44,18 @@ module Docr::Types
     @[JSON::Field(key: "Labels")]
     property labels : Hash(String, String)?
 
-    def initialize(@name, @check_duplicate = nil, @driver = "bridge", @internal = nil, @attachable = nil, @ingress = nil, @ipam = nil, @enable_ipv6 = nil, @options = nil, @labels = nil)
+    def initialize(
+      @name,
+      @check_duplicate = nil,
+      @driver = "bridge",
+      @internal = nil,
+      @attachable = nil,
+      @ingress = nil,
+      @ipam = nil,
+      @enable_ipv6 = nil,
+      @options = nil,
+      @labels = nil
+    )
     end
   end
 end
