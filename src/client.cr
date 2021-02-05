@@ -1,7 +1,7 @@
 require "json"
 require "http/client"
 
-require "./models/error_response"
+require "./types/error_response"
 
 module Docr
   class DockerAPIError < Exception
@@ -22,7 +22,7 @@ module Docr
       @client.exec(*params) do |response|
         unless response.success?
           body = response.body_io.gets_to_end
-          error = Docr::Models::ErrorResponse.from_json(body)
+          error = Docr::Types::ErrorResponse.from_json(body)
 
           raise DockerAPIError.new(error.message, response.status_code)
         end

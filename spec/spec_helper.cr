@@ -1,4 +1,5 @@
 require "spec"
+
+require "../src/api"
 require "../src/client"
-require "../src/api/*"
-require "../src/models/*"
+require "../src/types/*"

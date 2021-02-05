@@ -1,0 +1,22 @@
+version: "1.0"
+
+jobs:
+  quality:
+    commands:
+      - crystal spec
+    needs:
+      - format
+      - lint
+
+  format:
+    commands:
+      - crystal tool format --check
+
+  lint:
+    commands:
+      - ameba
+
+  docs:
+    commands:
+      - crystal docs
+      - open ./docs/index.html

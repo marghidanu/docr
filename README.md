@@ -35,7 +35,7 @@ TODO: Write development instructions here
 * [x] ContainerList
 * [x] ContainerCreate
 * [x] ContainerInspect
-* [~] ContainerTop
+* [x] ContainerTop
 * [x] ContainerLogs
 * [x] ContainerChanges
 * [ ] ContainerStats
