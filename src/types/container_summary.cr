@@ -39,6 +39,9 @@ module Docr::Types
 
     @[JSON::Field(key: "Status")]
     property status : String
+
+    @[JSON::Field(key: "Mounts")]
+    property mounts : Array(Docr::Types::Mount)
   end
 end
 
@@ -54,7 +57,3 @@ end
 #       type: "object"
 #       additionalProperties:
 #         $ref: "#/definitions/EndpointSettings"
-# Mounts:
-#   type: "array"
-#   items:
-#     $ref: "#/definitions/Mount"

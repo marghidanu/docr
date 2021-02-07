@@ -14,14 +14,6 @@ module Docr::Types
     include JSON::Serializable
 
     #   - $ref: "#/definitions/Resources"
-    #     - type: "object"
-    #       properties:
-    #         Mounts:
-    #           description: |
-    #             Specification for mounts to be added to the container.
-    #           type: "array"
-    #           items:
-    #             $ref: "#/definitions/Mount"
 
     @[JSON::Field(key: "Binds")]
     property binds : Array(String)?
@@ -49,6 +41,9 @@ module Docr::Types
 
     @[JSON::Field(key: "VolumesFrom")]
     property volumes_from : Array(String)?
+
+    @[JSON::Field(key: "Mounts")]
+    property mounts : Array(Docr::Types::Mount)?
 
     @[JSON::Field(key: "CapAdd")]
     property cap_add : Array(String)?
