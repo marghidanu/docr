@@ -1,6 +1,26 @@
 require "json"
 
 module Docr::Types
+  struct RootFS
+    include JSON::Serializable
+
+    @[JSON::Field(key: "Type")]
+    property type : String
+
+    @[JSON::Field(key: "Layers")]
+    property layers : Array(String)?
+
+    @[JSON::Field(key: "BaseLayer")]
+    property base_layer : String?
+  end
+
+  struct Metadata
+    include JSON::Serializable
+
+    @[JSON::Field(key: "LastTagTime")]
+    property last_tag_time : String
+  end
+
   struct Image
     include JSON::Serializable
 
@@ -55,24 +75,10 @@ module Docr::Types
     @[JSON::Field(key: "GraphDriver")]
     property graph_driver : Docr::Types::GraphDriverData
 
-    #   RootFS:
-    #     type: "object"
-    #     required: [Type]
-    #     properties:
-    #       Type:
-    #         type: "string"
-    #         x-nullable: false
-    #       Layers:
-    #         type: "array"
-    #         items:
-    #           type: "string"
-    #       BaseLayer:
-    #         type: "string"
-    #   Metadata:
-    #     type: "object"
-    #     properties:
-    #       LastTagTime:
-    #         type: "string"
-    #         format: "dateTime"
+    @[JSON::Field(key: "RootFS")]
+    property root_fs : Docr::Types::RootFS
+
+    @[JSON::Field(key: "Metadata")]
+    property metadata : Docr::Types::Metadata
   end
 end

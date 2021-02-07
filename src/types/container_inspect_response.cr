@@ -16,8 +16,8 @@ module Docr::Types
     @[JSON::Field(key: "Args")]
     property args : Array(String)
 
-    # @[JSON::Field(key: "State")]
-    # property state : ContainerState?
+    @[JSON::Field(key: "State")]
+    property state : Docr::Types::ContainerState?
 
     @[JSON::Field(key: "Image")]
     property image : String
@@ -58,6 +58,9 @@ module Docr::Types
     @[JSON::Field(key: "ExecIDs")]
     property exec_ids : Array(String)?
 
+    @[JSON::Field(key: "HostConfig")]
+    property host_config : Docr::Types::HostConfig
+
     @[JSON::Field(key: "GraphDriver")]
     property graph_driver : Docr::Types::GraphDriverData
 
@@ -67,16 +70,13 @@ module Docr::Types
     @[JSON::Field(key: "SizeRootFs")]
     property size_root_fs : Int64?
 
+    @[JSON::Field(key: "Mounts")]
+    property mounts : Array(Docr::Types::MountPoint)
+
     @[JSON::Field(key: "Config")]
     property config : Docr::Types::ContainerConfig
+
+    @[JSON::Field(key: "NetworkSettings")]
+    property network_settings : Docr::Types::NetworkSettings
   end
 end
-
-# HostConfig:
-# $ref: "#/definitions/HostConfig"
-# Mounts:
-# type: "array"
-# items:
-#   $ref: "#/definitions/MountPoint"
-# NetworkSettings:
-# $ref: "#/definitions/NetworkSettings"

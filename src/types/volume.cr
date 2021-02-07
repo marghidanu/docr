@@ -32,15 +32,14 @@ module Docr::Types
     property created_at : String
 
     # Low-level details about the volume, provided by the volume driver.
-    # @[JSON::Field(key: "Status")]
-    # property status : Hash(String, Object)
+    @[JSON::Field(key: "Status")]
+    property status : Hash(String, Hash(String, String))?
 
     # User-defined key/value metadata.
     @[JSON::Field(key: "Labels")]
     property labels : Hash(String, String)?
 
     # The level at which the volume exists. Either `global` for cluster-wide, or `local` for machine level.
-    #   = "local" #enum: ["local", "global"]
     @[JSON::Field(key: "Scope")]
     property scope : String
 
