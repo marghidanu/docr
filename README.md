@@ -2,7 +2,9 @@
 
 ![CI](https://github.com/marghidanu/docr/workflows/CI/badge.svg)
 
-Docker client for Crystal.
+Docker client for Crystal. 
+
+ ## Description
 
 This is still work in progress:
 
@@ -10,7 +12,7 @@ This is still work in progress:
 * [ ] Make sure models are complete
 * [ ] Extend client to support calls over network
 
-PRs are always welcome!
+PRs are always welcomed!
 
 ## Installation
 
@@ -29,10 +31,6 @@ PRs are always welcome!
 ```crystal
 require "docr"
 ```
-
-## Development
-
-TODO: Write development instructions here
 
 ## Supported API calls
 
@@ -99,14 +97,8 @@ TODO: Write development instructions here
 * [x] SystemEvents
 * [ ] SystemDataUsage
 
-## Contributing
-
-1. Fork it (<https://github.com/marghidanu/docr/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
-
 ## Contributors
 
 - [Tudor Marghidanu](https://github.com/marghidanu) - creator and maintainer
+
+[Contribution guidelines for this project](docs/CONTRIBUTING.md)
