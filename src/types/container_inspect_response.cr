@@ -71,7 +71,7 @@ module Docr::Types
     property size_root_fs : Int64?
 
     @[JSON::Field(key: "Mounts")]
-    property mounts : Array(Docr::Types::MountPoint)
+    property mounts : Array(Docr::Types::MountPoint)?
 
     @[JSON::Field(key: "Config")]
     property config : Docr::Types::ContainerConfig
