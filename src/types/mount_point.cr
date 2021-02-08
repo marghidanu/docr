@@ -8,7 +8,7 @@ module Docr::Types
     property type : String
 
     @[JSON::Field(key: "Name")]
-    property name : String
+    property name : String?
 
     @[JSON::Field(key: "Source")]
     property source : String
