@@ -17,7 +17,7 @@ module Docr::Types
     property destination : String
 
     @[JSON::Field(key: "Driver")]
-    property driver : String
+    property driver : String?
 
     @[JSON::Field(key: "Mode")]
     property mode : String
