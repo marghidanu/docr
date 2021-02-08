@@ -7,7 +7,7 @@ module Docr::Endpoints
     def initialize(@client)
     end
 
-    def list(all : Bool = false, limit : Int32? = nil, size : Bool = false, filters = Hash(String, Array(String)).new)
+    def list(all : Bool = false, limit : Int32? = nil, size : Bool = false, filters = Hash(String, Array(String)).new) : Array(Docr::Types::ContainerSummary)
       params = URI::Params{
         "all"     => [all.to_s],
         "limit"   => [limit.to_s],
@@ -21,7 +21,7 @@ module Docr::Endpoints
       end
     end
 
-    def create(name : String, config : Docr::Types::ContainerConfig)
+    def create(name : String, config : Docr::Types::ContainerConfig) : Docr::Types::ContainerCreateResponse
       params = URI::Params{
         "name" => [name],
       }
@@ -38,14 +38,14 @@ module Docr::Endpoints
       end
     end
 
-    def changes(id : String)
+    def changes(id : String) : Array(Docr::Types::ContainerChangeResponseItem)
       @client.call("GET", "/containers/#{id}/changes") do |response|
         body = response.body_io.gets_to_end
         return Array(Docr::Types::ContainerChangeResponseItem).from_json(body)
       end
     end
 
-    def inspect(id : String)
+    def inspect(id : String) : Docr::Types::ContainerInspectResponse
       @client.call("GET", "/containers/#{id}/json") do |response|
         body = response.body_io.gets_to_end
         return Docr::Types::ContainerInspectResponse.from_json(body)
@@ -104,7 +104,7 @@ module Docr::Endpoints
       end
     end
 
-    def top(id : String, ps_args = "-ef")
+    def top(id : String, ps_args = "-ef") : Docr::Types::ContainerTopResponse
       params = URI::Params{
         "ps_args" => [ps_args],
       }
@@ -115,7 +115,7 @@ module Docr::Endpoints
       end
     end
 
-    def wait(id : String, condition = "not-running")
+    def wait(id : String, condition = "not-running") : Docr::Types::ContainerWaitResponse
       params = URI::Params{
         "condition" => [condition],
       }

@@ -26,7 +26,7 @@ module Docr::Types
     property pid : Int64
 
     @[JSON::Field(key: "ExitCode")]
-    property exit_code : Int64
+    property exit_code : Int32
 
     @[JSON::Field(key: "Error")]
     property error : String
