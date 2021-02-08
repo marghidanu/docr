@@ -7,7 +7,11 @@ api.images.create("nginx", "latest")
 
 describe "Containers" do
   it "should create a new container" do
-    config = Docr::Types::CreateContainerConfig.new(image: "nginx:latest")
+    config = Docr::Types::CreateContainerConfig.new(
+      image: "nginx:latest",
+      host_config: Docr::Types::HostConfig.new,
+    )
+
     _ = api.containers.create("abc", config)
     api.containers.start("abc")
   end
