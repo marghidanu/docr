@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ContainerSummary
+  class ContainerSummary
     include JSON::Serializable
 
     @[JSON::Field(key: "Id")]

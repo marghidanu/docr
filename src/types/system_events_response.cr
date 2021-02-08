@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct Actor
+  class Actor
     include JSON::Serializable
 
     # The ID of the object emitting the event
@@ -13,7 +13,7 @@ module Docr::Types
     property attributes : Hash(String, String)
   end
 
-  struct SystemEventsResponse
+  class SystemEventsResponse
     include JSON::Serializable
 
     # The type of object emitting the event

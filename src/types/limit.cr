@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct Limit
+  class Limit
     include JSON::Serializable
 
     @[JSON::Field(key: "NanoCPUs")]

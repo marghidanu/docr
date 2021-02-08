@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct GraphDriverData
+  class GraphDriverData
     include JSON::Serializable
 
     @[JSON::Field(key: "Name")]

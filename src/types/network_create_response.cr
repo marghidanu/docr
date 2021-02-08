@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct NetworkCreateResponse
+  class NetworkCreateResponse
     include JSON::Serializable
 
     # The ID of the created network.

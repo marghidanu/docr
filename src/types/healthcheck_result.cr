@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct HealthcheckResult
+  class HealthcheckResult
     include JSON::Serializable
 
     @[JSON::Field(key: "Start")]

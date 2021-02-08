@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ComponentVersion
+  class ComponentVersion
     include JSON::Serializable
 
     # Name of the component
@@ -17,7 +17,7 @@ module Docr::Types
     property details : Hash(String, String)?
   end
 
-  struct SystemVersion
+  class SystemVersion
     include JSON::Serializable
     # The version of the daemon
     @[JSON::Field(key: "Version")]

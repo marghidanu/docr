@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ExecStartConfig
+  class ExecStartConfig
     include JSON::Serializable
 
     @[JSON::Field(key: "Detach")]

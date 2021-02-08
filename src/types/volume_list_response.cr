@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct VolumeListResponse
+  class VolumeListResponse
     include JSON::Serializable
 
     @[JSON::Field(key: "Volumes")]

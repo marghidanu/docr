@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ContainerCreateResponse
+  class ContainerCreateResponse
     include JSON::Serializable
 
     # The ID of the created container

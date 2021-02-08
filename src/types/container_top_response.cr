@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ContainerTopResponse
+  class ContainerTopResponse
     include JSON::Serializable
 
     @[JSON::Field(key: "Titles")]

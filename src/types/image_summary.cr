@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ImageSummary
+  class ImageSummary
     include JSON::Serializable
 
     @[JSON::Field(key: "Id")]

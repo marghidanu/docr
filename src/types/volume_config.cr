@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct VolumeConfig
+  class VolumeConfig
     include JSON::Serializable
 
     # The new volume's name. If not specified, Docker generates a name.

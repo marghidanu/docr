@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct Address
+  class Address
     include JSON::Serializable
 
     @[JSON::Field(key: "Addr")]

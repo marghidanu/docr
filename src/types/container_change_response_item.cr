@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ContainerChangeResponseItem
+  class ContainerChangeResponseItem
     include JSON::Serializable
 
     @[JSON::Field(key: "Path")]

@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct NetworkConfig
+  class NetworkConfig
     include JSON::Serializable
 
     # The network's name.

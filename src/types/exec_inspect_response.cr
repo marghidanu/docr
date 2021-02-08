@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ExecInspectResponse
+  class ExecInspectResponse
     include JSON::Serializable
 
     @[JSON::Field(key: "CanRemove")]

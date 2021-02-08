@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct SystemAuthResponse
+  class SystemAuthResponse
     include JSON::Serializable
 
     # The status of the authentication

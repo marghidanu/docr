@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ContainerState
+  class ContainerState
     include JSON::Serializable
 
     @[JSON::Field(key: "Status")]

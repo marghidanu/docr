@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct Network
+  class Network
     include JSON::Serializable
 
     @[JSON::Field(key: "Name")]

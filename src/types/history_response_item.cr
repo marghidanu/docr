@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct HistoryResponseItem
+  class HistoryResponseItem
     include JSON::Serializable
 
     @[JSON::Field(key: "Id")]

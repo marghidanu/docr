@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ExecConfig
+  class ExecConfig
     @[JSON::Field(key: "AttachStdin")]
     property attach_stdin : Bool?
 

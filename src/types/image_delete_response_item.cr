@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ImageDeleteResponseItem
+  class ImageDeleteResponseItem
     include JSON::Serializable
 
     # The image ID of an image that was untagged

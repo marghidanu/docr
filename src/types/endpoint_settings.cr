@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct EndpointSettings
+  class EndpointSettings
     include JSON::Serializable
 
     @[JSON::Field(key: "IPAMConfig")]

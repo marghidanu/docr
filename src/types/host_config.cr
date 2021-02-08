@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct LogConfig
+  class LogConfig
     include JSON::Serializable
 
     @[JSON::Field(key: "Type")]
@@ -10,7 +10,7 @@ module Docr::Types
     property config : Hash(String, String)
   end
 
-  struct HostConfig
+  class HostConfig
     include JSON::Serializable
 
     #   - $ref: "#/definitions/Resources"

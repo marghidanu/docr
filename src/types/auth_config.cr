@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct AuthConfig
+  class AuthConfig
     include JSON::Serializable
 
     @[JSON::Field(key: "username")]

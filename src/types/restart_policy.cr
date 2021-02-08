@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct RestartPolicy
+  class RestartPolicy
     include JSON::Serializable
 
     @[JSON::Field(key: "Name")]

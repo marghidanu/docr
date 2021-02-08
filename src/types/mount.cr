@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct DriverConfig
+  class DriverConfig
     include JSON::Serializable
 
     @[JSON::Field(key: "Name")]
@@ -11,7 +11,7 @@ module Docr::Types
     property options : Hash(String, String)
   end
 
-  struct BindOptions
+  class BindOptions
     include JSON::Serializable
 
     @[JSON::Field(key: "Propagation")]
@@ -21,7 +21,7 @@ module Docr::Types
     property non_recursive : Bool = false
   end
 
-  struct VolumeOptions
+  class VolumeOptions
     include JSON::Serializable
 
     @[JSON::Field(key: "NoCopy")]
@@ -34,7 +34,7 @@ module Docr::Types
     property driver_config : Docr::Types::DriverConfig
   end
 
-  struct TmpfsOptions
+  class TmpfsOptions
     include JSON::Serializable
 
     @[JSON::Field(key: "SizeBytes")]
@@ -44,7 +44,7 @@ module Docr::Types
     property mode : Int64
   end
 
-  struct Mount
+  class Mount
     include JSON::Serializable
 
     @[JSON::Field(key: "Target")]

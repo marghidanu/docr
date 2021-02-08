@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct MountPoint
+  class MountPoint
     include JSON::Serializable
 
     @[JSON::Field(key: "Type")]

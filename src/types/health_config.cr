@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct HealthConfig
+  class HealthConfig
     include JSON::Serializable
 
     # The test to perform.

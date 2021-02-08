@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct DeviceMapping
+  class DeviceMapping
     include JSON::Serializable
 
     @[JSON::Field(key: "PathOnHost")]

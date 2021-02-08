@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct Port
+  class Port
     include JSON::Serializable
 
     @[JSON::Field(key: "IP")]

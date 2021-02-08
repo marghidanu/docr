@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct DeviceRequest
+  class DeviceRequest
     include JSON::Serializable
 
     @[JSON::Field(key: "Driver")]

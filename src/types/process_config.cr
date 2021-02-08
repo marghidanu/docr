@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ProcessConfig
+  class ProcessConfig
     include JSON::Serializable
 
     @[JSON::Field(key: "privileged")]

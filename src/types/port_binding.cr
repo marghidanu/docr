@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct PortBinding
+  class PortBinding
     include JSON::Serializable
 
     @[JSON::Field(key: "HostIp")]

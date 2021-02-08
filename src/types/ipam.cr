@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct IPAM
+  class IPAM
     include JSON::Serializable
 
     # Name of the IPAM driver to use.

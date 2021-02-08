@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ContainerConfig
+  class ContainerConfig
     include JSON::Serializable
 
     @[JSON::Field(key: "Hostname")]

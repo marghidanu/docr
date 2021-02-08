@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct UsageData
+  class UsageData
     include JSON::Serializable
 
     # Amount of disk space used by the volume (in bytes)
@@ -12,7 +12,7 @@ module Docr::Types
     property ref_count : Int64 = -1
   end
 
-  struct Volume
+  class Volume
     include JSON::Serializable
 
     # Name of the volume.

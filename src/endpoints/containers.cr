@@ -21,7 +21,7 @@ module Docr::Endpoints
       end
     end
 
-    def create(name : String, config : Docr::Types::ContainerConfig) : Docr::Types::ContainerCreateResponse
+    def create(name : String, config : Docr::Types::CreateContainerConfig) : Docr::Types::ContainerCreateResponse
       params = URI::Params{
         "name" => [name],
       }

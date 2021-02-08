@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ErrorResponse
+  class ErrorResponse
     include JSON::Serializable
 
     @[JSON::Field(key: "message")]

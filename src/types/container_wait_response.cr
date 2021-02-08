@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct ContainerWaitResponse
+  class ContainerWaitResponse
     include JSON::Serializable
 
     @[JSON::Field(key: "StatusCode")]

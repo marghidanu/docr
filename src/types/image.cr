@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct RootFS
+  class RootFS
     include JSON::Serializable
 
     @[JSON::Field(key: "Type")]
@@ -14,14 +14,14 @@ module Docr::Types
     property base_layer : String?
   end
 
-  struct Metadata
+  class Metadata
     include JSON::Serializable
 
     @[JSON::Field(key: "LastTagTime")]
     property last_tag_time : String
   end
 
-  struct Image
+  class Image
     include JSON::Serializable
 
     @[JSON::Field(key: "Id")]

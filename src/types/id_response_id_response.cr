@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct IdResponseIdResponse
+  class IdResponseIdResponse
     include JSON::Serializable
 
     @[JSON::Field(key: "Id")]

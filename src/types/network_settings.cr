@@ -1,7 +1,7 @@
 require "json"
 
 module Docr::Types
-  struct NetworkSettings
+  class NetworkSettings
     include JSON::Serializable
 
     @[JSON::Field(key: "Bridge")]
