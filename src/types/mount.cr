@@ -57,7 +57,7 @@ module Docr::Types
     property type : String
 
     @[JSON::Field(key: "ReadOnly")]
-    property read_only : Bool
+    property read_only : Bool?
 
     @[JSON::Field(key: "Consistency")]
     property consistency : String
