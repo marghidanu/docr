@@ -48,7 +48,7 @@ module Docr::Types
     include JSON::Serializable
 
     @[JSON::Field(key: "Target")]
-    property target : String
+    property target : String?
 
     @[JSON::Field(key: "Source")]
     property source : String
