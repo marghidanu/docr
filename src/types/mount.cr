@@ -60,7 +60,7 @@ module Docr::Types
     property read_only : Bool?
 
     @[JSON::Field(key: "Consistency")]
-    property consistency : String
+    property consistency : String?
 
     @[JSON::Field(key: "BindOptions")]
     property bind_options : Docr::Types::BindOptions
