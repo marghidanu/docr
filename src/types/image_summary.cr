@@ -11,7 +11,7 @@ module Docr::Types
     property parent_id : String
 
     @[JSON::Field(key: "RepoTags")]
-    property repo_tags : Array(String)
+    property repo_tags : Array(String)?
 
     @[JSON::Field(key: "RepoDigests")]
     property repo_digests : Array(String)?
