@@ -66,7 +66,7 @@ module Docr::Types
     property bind_options : Docr::Types::BindOptions?
 
     @[JSON::Field(key: "VolumeOptions")]
-    property volume_options : Docr::Types::VolumeOptions
+    property volume_options : Docr::Types::VolumeOptions?
 
     @[JSON::Field(key: "TmpfsOptions")]
     property tmpfs_options : Docr::Types::TmpfsOptions
