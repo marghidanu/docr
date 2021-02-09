@@ -69,6 +69,6 @@ module Docr::Types
     property volume_options : Docr::Types::VolumeOptions?
 
     @[JSON::Field(key: "TmpfsOptions")]
-    property tmpfs_options : Docr::Types::TmpfsOptions
+    property tmpfs_options : Docr::Types::TmpfsOptions?
   end
 end
