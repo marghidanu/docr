@@ -63,7 +63,7 @@ module Docr::Types
     property consistency : String?
 
     @[JSON::Field(key: "BindOptions")]
-    property bind_options : Docr::Types::BindOptions
+    property bind_options : Docr::Types::BindOptions?
 
     @[JSON::Field(key: "VolumeOptions")]
     property volume_options : Docr::Types::VolumeOptions
