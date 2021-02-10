@@ -8,6 +8,6 @@ module Docr::Types
     property status_code : Int64
 
     @[JSON::Field(key: "Error")]
-    property error : Hash(String, String)
+    property error : Hash(String, String)?
   end
 end
