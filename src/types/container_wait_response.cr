@@ -5,7 +5,7 @@ module Docr::Types
     include JSON::Serializable
 
     @[JSON::Field(key: "StatusCode")]
-    property status_code : Int64
+    property status_code : Int32
 
     @[JSON::Field(key: "Error")]
     property error : Hash(String, String)?
