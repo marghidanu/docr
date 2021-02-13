@@ -54,4 +54,23 @@ module Docr
       @exec = Docr::Endpoints::Exec.new(client)
     end
   end
+
+  class Utils
+    def self.parse_repository_tag(name : String)
+      if name.includes?('@')
+        data = name.rpartition('@')
+        return {data[0], data[2]}
+      end
+
+      repository, tag = name, ""
+      if name.includes?(':')
+        data = name.rpartition(':')
+        repository, tag = data[0], data[2]
+
+        repository, tag = name, "" if tag.includes?('/')
+      end
+
+      return {repository, tag}
+    end
+  end
 end
