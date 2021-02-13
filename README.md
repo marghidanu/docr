@@ -6,7 +6,7 @@ Docker client for Crystal.
 
  ## Description
 
-This is still work in progress:
+Remaining issues:
 
 * [ ] Test all endpoint functions
 * [ ] Make sure models are complete

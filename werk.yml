@@ -2,6 +2,7 @@ version: "1.0"
 
 jobs:
   quality:
+    executor: local
     commands:
       - crystal spec
     needs:
@@ -9,14 +10,18 @@ jobs:
       - lint
 
   format:
+    executor: local
     commands:
       - crystal tool format --check
 
   lint:
+    executor: docker
+    image: veelenga/ameba
     commands:
       - ameba
 
   docs:
+    executor: local
     commands:
       - crystal docs
       - open ./docs/index.html
