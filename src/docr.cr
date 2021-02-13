@@ -58,15 +58,13 @@ module Docr
   class Utils
     def self.parse_repository_tag(name : String)
       if name.includes?('@')
-        data = name.rpartition('@')
-        return {data[0], data[2]}
+        repository, _, tag = name.rpartition('@')
+        return {repository, tag}
       end
 
       repository, tag = name, ""
       if name.includes?(':')
-        data = name.rpartition(':')
-        repository, tag = data[0], data[2]
-
+        repository, _, tag = name.rpartition(':')
         repository, tag = name, "" if tag.includes?('/')
       end
 
