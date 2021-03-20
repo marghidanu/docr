@@ -16,7 +16,7 @@ jobs:
       - name: Install Crystal
         uses: oprypin/install-crystal@v1
         with:
-          crystal: 0.36.0
+          crystal: 0.36.1
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,13 +24,11 @@ jobs:
       - name: Check code formatting
         run: crystal tool format --check
 
-      - name: Crystal Ameba Linter
-        uses: crystal-ameba/github-action@v0.2.6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Install dependencies
         run: shards install
+
+      - name: Crystal Ameba Linter
+        run: shards build && ./bin/ameba 
 
       - name: Run tests
         run: crystal spec
