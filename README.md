@@ -62,9 +62,9 @@ require "docr"
 * [x] ImageCreate
 * [x] ImageInspect
 * [x] ImageHistory
-* [~] ImagePush
+* [x] ImagePush
 * [x] ImageTag
-* [~] ImageDelete
+* [x] ImageDelete
 
 ### Networks
 
