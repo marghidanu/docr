@@ -24,11 +24,11 @@ jobs:
       - name: Check code formatting
         run: crystal tool format --check
 
+      - name: Crystal Ameba Linter
+        run: docker run -t -v $PWD/src:/src veelenga/ameba:v0.14.1
+
       - name: Install dependencies
         run: shards install
-
-      - name: Crystal Ameba Linter
-        run: shards build && ./bin/ameba 
 
       - name: Run tests
         run: crystal spec
