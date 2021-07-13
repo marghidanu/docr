@@ -100,5 +100,4 @@ require "docr"
 ## Contributors
 
 - [Tudor Marghidanu](https://github.com/marghidanu) - creator and maintainer
-
-[Contribution guidelines for this project](docs/CONTRIBUTING.md)
+- [Troy Sornson](https://github.com/Vici37) - contributor
