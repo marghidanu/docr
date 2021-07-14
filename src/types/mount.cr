@@ -9,6 +9,9 @@ module Docr::Types
 
     @[JSON::Field(key: "Options")]
     property options : Hash(String, String)
+
+    def initialize(@name, @options)
+    end
   end
 
   class BindOptions
@@ -19,6 +22,9 @@ module Docr::Types
 
     @[JSON::Field(key: "NonRecursive")]
     property non_recursive : Bool = false
+
+    def initialize(@propagation, @non_recursive = false)
+    end
   end
 
   class VolumeOptions
@@ -42,19 +48,22 @@ module Docr::Types
 
     @[JSON::Field(key: "Mode")]
     property mode : Int64
+
+    def initialize(@size_bytes, @mode)
+    end
   end
 
   class Mount
     include JSON::Serializable
-
-    @[JSON::Field(key: "Target")]
-    property target : String?
 
     @[JSON::Field(key: "Source")]
     property source : String
 
     @[JSON::Field(key: "Type")]
     property type : String
+
+    @[JSON::Field(key: "Target")]
+    property target : String?
 
     @[JSON::Field(key: "ReadOnly")]
     property read_only : Bool?
@@ -70,5 +79,17 @@ module Docr::Types
 
     @[JSON::Field(key: "TmpfsOptions")]
     property tmpfs_options : Docr::Types::TmpfsOptions?
+
+    def initialize(
+      @source,
+      @type,
+      @target = nil,
+      @read_only = nil,
+      @consistency = nil,
+      @bind_options = nil,
+      @volume_options = nil,
+      @tmpfs_options = nil
+    )
+    end
   end
 end

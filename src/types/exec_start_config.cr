@@ -5,9 +5,12 @@ module Docr::Types
     include JSON::Serializable
 
     @[JSON::Field(key: "Detach")]
-    property detach : Bool
+    property detach : Bool?
 
     @[JSON::Field(key: "Tty")]
-    property tty : Bool
+    property tty : Bool?
+
+    def initialize(@detach = false, @tty = false)
+    end
   end
 end

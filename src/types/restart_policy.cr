@@ -8,6 +8,9 @@ module Docr::Types
     property name : String
 
     @[JSON::Field(key: "MaximumRetryCount")]
-    property maximum_retry_count : Int64
+    property maximum_retry_count : Int64?
+
+    def initialize(@name = "", @maximum_retry_count = nil)
+    end
   end
 end

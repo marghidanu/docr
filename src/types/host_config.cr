@@ -8,6 +8,12 @@ module Docr::Types
     property type : String
     @[JSON::Field(key: "Config")]
     property config : Hash(String, String)
+
+    def initialize(
+      @type,
+      @config
+    )
+    end
   end
 
   class HostConfig
@@ -28,7 +34,7 @@ module Docr::Types
     property network_mode : String?
 
     @[JSON::Field(key: "PortBindings")]
-    property port_bindings : Hash(String, Docr::Types::PortBinding)?
+    property port_bindings : Hash(String, Array(Docr::Types::PortBinding))?
 
     @[JSON::Field(key: "RestartPolicy")]
     property restart_policy : Docr::Types::RestartPolicy?
