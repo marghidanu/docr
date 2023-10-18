@@ -16,7 +16,7 @@ jobs:
       - name: Install Crystal
         uses: oprypin/install-crystal@v1
         with:
-          crystal: 0.36.1
+          crystal: 1.10.1
 
       - name: Checkout code
         uses: actions/checkout@v2

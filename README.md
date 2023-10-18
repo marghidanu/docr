@@ -58,7 +58,7 @@ require "docr"
 ### Images
 
 * [x] ImageList
-* [ ] ImageBuild
+* [x] ImageBuild
 * [x] ImageCreate
 * [x] ImageInspect
 * [x] ImageHistory
