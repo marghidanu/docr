@@ -1,3 +1,5 @@
+require "../client"
+
 module Docr::Endpoints
   class Exec
     getter client : Docr::Client

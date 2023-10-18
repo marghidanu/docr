@@ -1,3 +1,5 @@
+require "../client"
+
 module Docr::Endpoints
   class System
     getter client : Docr::Client

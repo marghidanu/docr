@@ -1,4 +1,5 @@
 require "spec"
 
 require "../src/docr"
-require "../src/types/*"
+require "../src/docr/types/*"
+require "../src/docr/utils"

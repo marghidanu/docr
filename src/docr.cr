@@ -1,39 +1,12 @@
 require "json"
-require "http/client"
 
-require "./types/error_response"
-require "./endpoints/*"
+require "./docr/client"
+require "./docr/endpoints/*"
+require "./docr/types/error_response"
+require "./docr/utils"
 
 module Docr
-  VERSION = "0.1.0"
-
-  class DockerAPIError < Exception
-    getter status_code : Int32
-
-    def initialize(message : String, @status_code : Int32)
-      super "Code: #{@status_code} Message: #{message}"
-    end
-  end
-
-  class Client
-    def initialize
-      socket = UNIXSocket.new("/var/run/docker.sock")
-      @client = HTTP::Client.new(socket)
-    end
-
-    def call(*params)
-      @client.exec(*params) do |response|
-        unless response.success?
-          body = response.body_io.gets_to_end
-          error = Docr::Types::ErrorResponse.from_json(body)
-
-          raise DockerAPIError.new(error.message, response.status_code)
-        end
-
-        yield response
-      end
-    end
-  end
+  VERSION = "0.1.1"
 
   class API
     getter client : Docr::Client
@@ -55,20 +28,17 @@ module Docr
     end
   end
 
-  class Utils
-    def self.parse_repository_tag(name : String)
-      if name.includes?('@')
-        repository, _, tag = name.rpartition('@')
-        return {repository, tag}
-      end
+  class DockerAPIError < Exception
+    getter status_code : Int32
 
-      repository, tag = name, ""
-      if name.includes?(':')
-        repository, _, tag = name.rpartition(':')
-        repository, tag = name, "" if tag.includes?('/')
-      end
+    def initialize(message : String, @status_code : Int32)
+      super "Code: #{@status_code} Message: #{message}"
+    end
+  end
 
-      return {repository, tag}
+  class DockerBuildError < Exception
+    def initialize(message : String?)
+      super "Docker Build Error: ${@message}"
     end
   end
 end

@@ -1,3 +1,4 @@
+require "../client"
 require "../types/*"
 
 module Docr::Endpoints
