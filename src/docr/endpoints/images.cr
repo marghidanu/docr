@@ -16,7 +16,7 @@ module Docr::Endpoints
 
     # ameba:disable Metrics/CyclomaticComplexity
     def build(
-      tag : String,
+      tags : Array(String),
       context : String = ".",
       dockerfile : String = "Dockerfile",
       extra_hosts : String? = nil,
@@ -44,7 +44,7 @@ module Docr::Endpoints
     )
       params = URI::Params{
         "dockerfile" => dockerfile,
-        "t"          => tag,
+        "t"          => tags,
         "q"          => quiet.to_s,
         "nocache"    => no_cache.to_s,
         "cachefrom"  => cache_from.to_json,
@@ -73,17 +73,16 @@ module Docr::Endpoints
         "Content-Type" => "application/x-tar",
       }
 
-      payload = Docr::Utils.build_context(context)
-
-      @client.call("POST", "/build?#{params}", headers, payload) do |response|
-        io = response.body_io
-
-        while line = io.gets
+      context = Docr::Utils.build_context(context)
+      @client.call("POST", "/build?#{params}", headers, context) do |response|
+        while line = response.body_io.gets
           json_data = JSON.parse(line.strip)
 
           if error = json_data["error"]?
             raise DockerBuildError.new(error.as_s)
-          elsif stream = json_data["stream"]?
+          end
+
+          if stream = json_data["stream"]?
             yield stream.as_s.strip
           end
         end
