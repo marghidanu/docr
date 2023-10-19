@@ -11,7 +11,9 @@ describe "Images" do
   it "should build an image" do
     api = setup
 
-    api.images.build("docr/local:latest", ".") { }
+    api.images.build(["docr/local:latest", "docr/local:1"], "./example") do |message|
+      puts message
+    end
   end
 
   it "should retrieve an image" do
