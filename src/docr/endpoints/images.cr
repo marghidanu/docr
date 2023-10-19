@@ -7,6 +7,13 @@ module Docr::Endpoints
     def initialize(@client)
     end
 
+    # Retrieves a list of images.
+    #
+    # - all: (Optional) List all images if true, else only top-level images. Default is false.
+    # - filters: (Optional) Filters to apply to the image list. Default is an empty hash.
+    # - digests: (Optional) Include image digests if true. Default is false.
+    #
+    # Returns an array of image summaries.
     def list(all = false, filters = Hash(String, String).new, digests = false)
       @client.call("GET", "/images/json") do |response|
         body = response.body_io.gets_to_end
@@ -14,6 +21,37 @@ module Docr::Endpoints
       end
     end
 
+    # Builds a Docker image using the specified parameters.
+    #
+    # - tags: An array of tags to assign to the built image.
+    # - context: (Optional) The build context directory. Default is the current directory.
+    # - dockerfile: (Optional) The path to the Dockerfile within the build context. Default is "Dockerfile".
+    # - extra_hosts: (Optional) Additional hostnames to add to the container's /etc/hosts file.
+    # - quiet: (Optional) Set to true to suppress build output. Default is false.
+    # - no_cache: (Optional) Set to true to skip the build cache. Default is false.
+    # - cache_from: (Optional) An array of images from which to cache build stages.
+    # - pull: (Optional) Set to true to force pulling base images. Default is false.
+    # - rm: (Optional) Set to true to remove intermediate containers after a successful build. Default is true.
+    # - forcerm: (Optional) Set to true to always remove intermediate containers, even upon failure. Default is false.
+    # - memory: (Optional) The maximum amount of memory the build process can use.
+    # - memswap: (Optional) Total memory (including swap). Set to -1 to disable swap.
+    # - cpu_shares: (Optional) CPU shares for the build process.
+    # - cpu_setcpus: (Optional) CPUs in which to allow execution.
+    # - cpu_period: (Optional) CPU CFS (Completely Fair Scheduler) period.
+    # - cpu_quota: (Optional) CPU CFS quota.
+    # - build_args: (Optional) Additional build arguments as a hash.
+    # - shmsize: (Optional) Size of /dev/shm in bytes.
+    # - squash: (Optional) Set to true to squash layers into a single layer. Default is false.
+    # - labels: (Optional) Labels to apply to the image as a hash.
+    # - network_mode: (Optional) Network mode for the build.
+    # - platform: (Optional) Platform for which to build the image.
+    # - target: (Optional) Build stage to build until.
+    # - outputs: (Optional) Build outputs configuration.
+    # - &block: A block to capture and process build output messages.
+    #
+    # Raises a DockerBuildError if the build process encounters an error.
+    #
+    # Does not return any specific value.
     # ameba:disable Metrics/CyclomaticComplexity
     def build(
       tags : Array(String),
@@ -79,7 +117,7 @@ module Docr::Endpoints
           json_data = JSON.parse(line.strip)
 
           if error = json_data["error"]?
-            raise DockerBuildError.new(error.as_s)
+            raise Docr::Errors::DockerBuildError.new(error.as_s)
           end
 
           if stream = json_data["stream"]?
@@ -89,6 +127,12 @@ module Docr::Endpoints
       end
     end
 
+    # Creates a new image by pulling it from a registry.
+    #
+    # - image: The name of the image to create.
+    # - tag: (Optional) The tag of the image. Default is "latest".
+    #
+    # Does not return any specific value.
     def create(image : String, tag : String = "latest")
       params = URI::Params{
         "fromImage" => [image],
@@ -100,6 +144,11 @@ module Docr::Endpoints
       end
     end
 
+    # Inspects a specific image by its name.
+    #
+    # - name: The name of the image to inspect.
+    #
+    # Returns details about the specified image.
     def inspect(name : String) : Docr::Types::Image
       @client.call("GET", "/images/#{name}/json") do |response|
         body = response.body_io.gets_to_end
@@ -107,6 +156,11 @@ module Docr::Endpoints
       end
     end
 
+    # Fetches the history of a specific image by its name.
+    #
+    # - name: The name of the image to fetch history for.
+    #
+    # Returns an array of image history response items.
     def history(name : String) : Array(Docr::Types::HistoryResponseItem)
       @client.call("GET", "/images/#{name}/history") do |response|
         body = response.body_io.gets_to_end
@@ -114,6 +168,13 @@ module Docr::Endpoints
       end
     end
 
+    # Pushes an image to a registry.
+    #
+    # - name: The name of the image to push.
+    # - tag: The tag of the image to push.
+    # - auth: Authentication credentials for pushing the image.
+    #
+    # Does not return any specific value.
     def push(name : String, tag : String, auth : String)
       # headers = HTTP::Headers {}
 
@@ -122,6 +183,13 @@ module Docr::Endpoints
       end
     end
 
+    # Tags an image into a repository.
+    #
+    # - name: The name of the image to tag.
+    # - repo: The repository name to tag the image into.
+    # - tag: The tag to apply to the image.
+    #
+    # Does not return any specific value.
     def tag(name : String, repo : String, tag : String)
       params = URI::Params{
         "repo" => [repo],
@@ -133,6 +201,13 @@ module Docr::Endpoints
       end
     end
 
+    # Deletes a specific image by its name.
+    #
+    # - name: The name of the image to delete.
+    # - force: (Optional) Force removal of the image. Default is false.
+    # - no_prune: (Optional) Do not delete untagged parents. Default is false.
+    #
+    # Returns an array of image delete response items.
     def delete(name : String, force = false, no_prune = false) : Array(Docr::Types::ImageDeleteResponseItem)
       @client.call("DELETE", "/images/#{name}") do |response|
         body = response.body_io.gets_to_end
