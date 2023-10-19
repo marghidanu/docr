@@ -2,9 +2,11 @@ name: CI
 
 on:
   push:
+    branches: ["master"]
   pull_request:
+    branches: ["*"]
   schedule:
-    - cron: 0 21 * * *
+    - cron: "0 21 * * *"
 
 jobs:
   quality:
