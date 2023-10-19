@@ -34,6 +34,9 @@ jobs:
         uses: oprypin/install-crystal@v1
         with:
           crystal: 1.10.1
+
+      - name: Install dependencies
+        run: shards install
       
       - name: Build docs
         run: crystal docs --project-version="${{ env.GITHUB_REF_SLUG }}" --source-refname="${{ env.GITHUB_SHA_SHORT }}"
