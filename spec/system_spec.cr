@@ -12,7 +12,7 @@ describe "System" do
       serveraddress: "docker.io",
     )
 
-    expect_raises(Docr::DockerAPIError) do
+    expect_raises(Docr::Errors::DockerAPIError) do
       _ = api.sys.auth(auth)
     end
   end
