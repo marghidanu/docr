@@ -1,0 +1,35 @@
+name: CD
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Crystal
+        uses: oprypin/install-crystal@v1
+        with:
+          crystal: 1.10.1
+
+      - name: Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libyaml-dev
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update version
+        run: |
+          yq eval -i ".version = \"${{ github.event.release.tag_name }}\"" shard.yml
+          perl -pi -e 's/VERSION = ".*"/VERSION = "${{ github.event.release.tag_name }}"/g' src/docr.cr
+
+      - name: Install dependencies
+        run: shards install --production --ignore-crystal-version
+
+      - name: Run tests
+        run: crystal spec
