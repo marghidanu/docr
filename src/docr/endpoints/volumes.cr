@@ -1,3 +1,5 @@
+require "../client"
+
 module Docr::Endpoints
   class Volumes
     getter client : Docr::Client
