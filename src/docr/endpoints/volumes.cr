@@ -56,9 +56,7 @@ module Docr::Endpoints
     #
     # Does not return any specific value.
     def delete(name : String, force : Bool = false)
-      @client.call("DELETE", "/volumes/#{name}") do |response|
-        response.consume_body_io
-      end
+      @client.call("DELETE", "/volumes/#{name}") { }
     end
   end
 end

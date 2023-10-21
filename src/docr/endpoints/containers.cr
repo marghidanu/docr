@@ -1,7 +1,5 @@
 require "../client"
-require "../types/*"
 
-# A module for Docr related operations.
 module Docr::Endpoints
   # Class responsible for handling container operations in the Docr system.
   class Containers
@@ -21,10 +19,10 @@ module Docr::Endpoints
     # Returns an array of container summaries.
     def list(all : Bool = false, limit : Int32? = nil, size : Bool = false, filters = Hash(String, Array(String)).new) : Array(Docr::Types::ContainerSummary)
       params = URI::Params{
-        "all"     => [all.to_s],
-        "limit"   => [limit.to_s],
-        "size"    => [size.to_s],
-        "filters" => [filters.to_json],
+        "all"     => all.to_s,
+        "limit"   => limit.to_s,
+        "size"    => size.to_s,
+        "filters" => filters.to_json,
       }
 
       @client.call("GET", "/containers/json?#{params}") do |response|
@@ -41,7 +39,7 @@ module Docr::Endpoints
     # Returns a response containing information about the created container.
     def create(name : String, config : Docr::Types::CreateContainerConfig) : Docr::Types::ContainerCreateResponse
       params = URI::Params{
-        "name" => [name],
+        "name" => name,
       }
 
       headers = HTTP::Headers{
@@ -84,45 +82,35 @@ module Docr::Endpoints
     #
     # - id: ID of the container to start.
     def start(id : String)
-      @client.call("POST", "/containers/#{id}/start") do |response|
-        response.consume_body_io
-      end
+      @client.call("POST", "/containers/#{id}/start") { }
     end
 
     # Stops a specific container.
     #
     # - id: ID of the container to stop.
     def stop(id : String)
-      @client.call("POST", "/containers/#{id}/stop") do |response|
-        response.consume_body_io
-      end
+      @client.call("POST", "/containers/#{id}/stop") { }
     end
 
     # Restarts a specific container.
     #
     # - id: ID of the container to restart.
     def restart(id : String)
-      @client.call("POST", "/containers/#{id}/restart") do |response|
-        response.consume_body_io
-      end
+      @client.call("POST", "/containers/#{id}/restart") { }
     end
 
     # Pauses a specific container.
     #
     # - id: ID of the container to pause.
     def pause(id : String)
-      @client.call("POST", "/containers/#{id}/pause") do |response|
-        response.consume_body_io
-      end
+      @client.call("POST", "/containers/#{id}/pause") { }
     end
 
     # Unpauses a specific container.
     #
     # - id: ID of the container to unpause.
     def unpause(id : String)
-      @client.call("POST", "/containers/#{id}/unpause") do |response|
-        response.consume_body_io
-      end
+      @client.call("POST", "/containers/#{id}/unpause") { }
     end
 
     # Fetches logs of a specific container.
@@ -139,13 +127,13 @@ module Docr::Endpoints
     # Returns the IO stream of the logs.
     def logs(id : String, follow = false, stdout = false, stderr = false, since = 0, _until = 0, timestamps = false, tail = "all")
       params = URI::Params{
-        "follow"     => [follow.to_s],
-        "stdout"     => [stdout.to_s],
-        "stderr"     => [stderr.to_s],
-        "since"      => [since.to_s],
-        "until"      => [_until.to_s],
-        "timestamps" => [timestamps.to_s],
-        "tail"       => [tail],
+        "follow"     => follow.to_s,
+        "stdout"     => stdout.to_s,
+        "stderr"     => stderr.to_s,
+        "since"      => since.to_s,
+        "until"      => _until.to_s,
+        "timestamps" => timestamps.to_s,
+        "tail"       => tail,
       }
 
       @client.call("GET", "/containers/#{id}/logs?#{params}") do |response|
@@ -158,9 +146,7 @@ module Docr::Endpoints
     # - id: ID of the container to kill.
     # - signal: Signal to use for killing. Default is "SIGKILL".
     def kill(id : String, signal = "SIGKILL")
-      @client.call("POST", "/containers/#{id}/kill") do |response|
-        response.consume_body_io
-      end
+      @client.call("POST", "/containers/#{id}/kill") { }
     end
 
     # Fetches process details within a specific container.
@@ -171,7 +157,7 @@ module Docr::Endpoints
     # Returns process details within the container.
     def top(id : String, ps_args = "-ef") : Docr::Types::ContainerTopResponse
       params = URI::Params{
-        "ps_args" => [ps_args],
+        "ps_args" => ps_args,
       }
 
       @client.call("GET", "/containers/#{id}/top?#{params}") do |response|
@@ -205,14 +191,12 @@ module Docr::Endpoints
     # - link: If true, remove the link. Default is false.
     def delete(id : String, volumes = false, force = false, link = false)
       params = URI::Params{
-        "v"     => [volumes.to_s],
-        "force" => [force.to_s],
-        "link"  => [link.to_s],
+        "v"     => volumes.to_s,
+        "force" => force.to_s,
+        "link"  => link.to_s,
       }
 
-      @client.call("DELETE", "/containers/#{id}?#{params}") do |response|
-        response.consume_body_io
-      end
+      @client.call("DELETE", "/containers/#{id}?#{params}") { }
     end
   end
 end
