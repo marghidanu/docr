@@ -1,6 +1,6 @@
-module Docr::Errors
+module Docr
   # Custom exception class for Docker API errors.
-  class DockerAPIError < Exception
+  class APIException < Exception
     # The HTTP status code associated with the error.
     getter status_code : Int32
 
@@ -15,7 +15,7 @@ module Docr::Errors
   end
 
   # Custom exception class for Docker build errors.
-  class DockerBuildError < Exception
+  class BuildException < Exception
     # Initializes a new instance of the Docker build error.
     #
     # - message: A message describing the build error.

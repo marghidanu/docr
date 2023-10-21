@@ -111,13 +111,14 @@ module Docr::Endpoints
         "Content-Type" => "application/x-tar",
       }
 
-      context = Docr::Utils.build_context(context)
-      @client.call("POST", "/build?#{params}", headers, context) do |response|
+      payload = Docr::Utils.build_context(context)
+
+      @client.call("POST", "/build?#{params}", headers, payload) do |response|
         while line = response.body_io.gets
           json_data = JSON.parse(line.strip)
 
           if error = json_data["error"]?
-            raise Docr::Errors::DockerBuildError.new(error.as_s)
+            raise Docr::BuildException.new(error.as_s)
           end
 
           if stream = json_data["stream"]?
@@ -135,8 +136,8 @@ module Docr::Endpoints
     # Does not return any specific value.
     def create(image : String, tag : String = "latest")
       params = URI::Params{
-        "fromImage" => [image],
-        "tag"       => [tag],
+        "fromImage" => image,
+        "tag"       => tag,
       }
 
       @client.call("POST", "/images/create?#{params}") do |response|
@@ -192,8 +193,8 @@ module Docr::Endpoints
     # Does not return any specific value.
     def tag(name : String, repo : String, tag : String)
       params = URI::Params{
-        "repo" => [repo],
-        "tag"  => [tag],
+        "repo" => repo,
+        "tag"  => tag,
       }
 
       @client.call("POST", "/images/#{name}/tag?#{params}") do |response|
