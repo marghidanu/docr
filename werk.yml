@@ -20,6 +20,11 @@ jobs:
     commands:
       - ameba
 
+  test:
+    executor: local
+    commands:
+      - fswatch -o spec | xargs -n1 -I{} crystal spec
+
   docs:
     executor: local
     commands:

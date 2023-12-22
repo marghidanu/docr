@@ -27,7 +27,7 @@ module Docr::Endpoints
     # - config: Configuration for creating the network.
     #
     # Returns the created network.
-    def create(config : Docr::Types::NetworkConfig)
+    def create(config : Docr::Types::NetworkConfig) : Docr::Types::NetworkCreateResponse
       headers = HTTP::Headers{"Content-Type" => "application/json"}
       payload = config.to_json
 

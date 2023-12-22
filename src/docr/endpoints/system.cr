@@ -31,6 +31,8 @@ module Docr::Endpoints
     #
     # Returns system information as a response object.
     def info
+      # TODO: Implement result
+
       @client.call("GET", "/info") do |response|
         _ = response.body_io.gets_to_end
         return nil

@@ -1,30 +1,52 @@
 require "./spec_helper"
 
-client = Docr::Client.new
-api = Docr::API.new(client)
-
+api = Docr::API.new(Docr::Client.new)
 api.images.create("nginx", "latest")
 
 describe "Containers" do
   it "should create a new container" do
-    config = Docr::Types::CreateContainerConfig.new(
-      image: "nginx:latest",
-      host_config: Docr::Types::HostConfig.new,
+    container = api.containers.create("abc",
+      Docr::Types::CreateContainerConfig.new(
+        image: "nginx:latest",
+        host_config: Docr::Types::HostConfig.new,
+      )
     )
 
-    _ = api.containers.create("abc", config)
+    container.should_not be_nil
+    container.should be_a Docr::Types::ContainerCreateResponse
+    container.id.size.should eq 64
+
+    # Starting the container
+
+    expect_raises(Docr::APIException) do
+      api.containers.start("000")
+    end
+
     api.containers.start("abc")
   end
 
   it "should inspect container" do
+    expect_raises(Docr::APIException) do
+      api.containers.inspect("000")
+    end
+
     result = api.containers.inspect("abc")
 
     result.should_not be_nil
+    result.should be_a Docr::Types::ContainerInspectResponse
     result.name.should eq "/abc"
   end
 
   it "should display running processes inside the container" do
-    _ = api.containers.top(id: "abc", ps_args: "aux")
+    expect_raises(Docr::APIException) do
+      api.containers.top(id: "000")
+    end
+
+    result = api.containers.top(id: "abc", ps_args: "aux")
+
+    result.should_not be_nil
+    result.should be_a Docr::Types::ContainerTopResponse
+    result.processes.size.should_not eq 0
   end
 
   it "should list all containers" do
@@ -33,6 +55,8 @@ describe "Containers" do
       filters: {"name" => ["abc"]},
     )
 
+    result.should_not be_nil
+    result.should be_a Array(Docr::Types::ContainerSummary)
     result.empty?.should be_false
 
     result[0].image.should eq "nginx:latest"

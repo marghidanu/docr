@@ -1,7 +1,6 @@
 require "./spec_helper"
 
-client = Docr::Client.new
-api = Docr::API.new(client)
+api = Docr::API.new(Docr::Client.new)
 
 describe "System" do
   it "should check the auth" do
@@ -22,11 +21,18 @@ describe "System" do
   end
 
   it "should retrieve Docker version" do
-    _ = api.sys.version
+    result = api.sys.version
+    
+    result.should_not be_nil
+    result.should be_a Docr::Types::SystemVersion
   end
 
   it "should ping the server" do
-    _ = api.sys.ping
+    result = api.sys.ping
+
+    result.should_not be_nil
+    result.should be_a String
+    result.should eq "OK"
   end
 
   it "should retrieve system events" do
