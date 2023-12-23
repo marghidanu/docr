@@ -158,8 +158,7 @@ module Docr::Endpoints
     # - id: ID of the container to attach to.
     def attach(id : String)
       params = URI::Params{
-        "stream" => ["1"],
-        "logs"   => ["1"],
+        "stream" => ["1"]
       }
 
       @client.call("POST", "/containers/#{id}/attach?#{params}") do |response|
