@@ -153,6 +153,20 @@ module Docr::Endpoints
       end
     end
 
+    # Attach to a container
+    #
+    # - id: ID of the container to attach to.
+    def attach(id : String)
+      params = URI::Params{
+        stream => [true],
+        logs   => [true],
+      }
+
+      @client.call("POST", "/containers/#{id}/attach?#{params}") do |response|
+        return response.body_io
+      end
+    end
+
     # Kills a specific container.
     #
     # - id: ID of the container to kill.
