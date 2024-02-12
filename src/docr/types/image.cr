@@ -70,7 +70,7 @@ module Docr::Types
     property size : Int64
 
     @[JSON::Field(key: "VirtualSize")]
-    property virtual_size : Int64
+    property virtual_size : Int64?
 
     @[JSON::Field(key: "GraphDriver")]
     property graph_driver : Docr::Types::GraphDriverData
