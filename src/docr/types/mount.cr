@@ -34,7 +34,7 @@ module Docr::Types
     property no_copy : Bool = false
 
     @[JSON::Field(key: "Labels")]
-    property labels : Hash(String, String)
+    property labels : Hash(String, String)?
 
     @[JSON::Field(key: "DriverConfig")]
     property driver_config : Docr::Types::DriverConfig
