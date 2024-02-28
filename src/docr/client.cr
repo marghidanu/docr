@@ -25,7 +25,7 @@ module Docr
     def call(method : String, url : String | URI, headers : HTTP::Headers | Nil = nil, body : IO | Slice(UInt8) | String | Nil = nil, &)
       @client.exec(method, url, headers, body) do |response|
         unless response.success?
-          body = response.body_io.gets_to_end
+          body = response.body_io?.try(&.gets_to_end) || "{\"message\": \"No response body\"}"
           error = Docr::Types::ErrorResponse.from_json(body)
 
           # Raise a custom DockerAPIError exception with the error message and status code.
