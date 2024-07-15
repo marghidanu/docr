@@ -93,6 +93,7 @@ module Docr::Endpoints
         "platform"   => platform,
         "target"     => target,
         "outputs"    => outputs,
+        "version"    => version,
       }
 
       params["extrahosts"] = extra_hosts if extra_hosts
