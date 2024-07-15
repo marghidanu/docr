@@ -78,6 +78,7 @@ module Docr::Endpoints
       platform : String = "",
       target : String = "",
       outputs : String = "",
+      version : String = "1",
       &
     )
       params = URI::Params{
