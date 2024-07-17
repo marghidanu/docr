@@ -19,15 +19,25 @@ module Docr::Utils
   end
 
   def self.build_context(path : String) : IO::Memory
+
     context = IO::Memory.new
     dockerignore = DockerIgnore.new(path)
 
     Compress::Gzip::Writer.open(context) do |gzip|
-      Crystar::Writer.open(gzip) do |tar|
-        gather_files(path).each() do |file|
-          unless dockerignore.ignored?(file)
-            tar.add(File.new(file))
-          end
+      Crystar::Writer.open(gzip) do |tarball|
+        Log.debug { "Adding files to tarball" }
+        Dir.glob("#{path}/**/*").each do |fpath|
+          next unless File.file? fpath
+          next if dockerignore.ignored?(fpath)
+          rel_path = Path[fpath].relative_to path
+          file_info = File.info(fpath)
+          hdr = Crystar::Header.new(
+            name: rel_path.to_s,
+            mode: file_info.permissions.to_i64,
+            size: file_info.size,
+          )
+          tarball.write_header(hdr)
+          tarball.write(File.read(fpath).to_slice)
         end
       end
     end
