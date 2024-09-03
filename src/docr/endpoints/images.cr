@@ -78,6 +78,7 @@ module Docr::Endpoints
       platform : String = "",
       target : String = "",
       outputs : String = "",
+      version : String = "1",
       &
     )
       params = URI::Params{
@@ -92,6 +93,7 @@ module Docr::Endpoints
         "platform"   => platform,
         "target"     => target,
         "outputs"    => outputs,
+        "version"    => version,
       }
 
       params["extrahosts"] = extra_hosts if extra_hosts

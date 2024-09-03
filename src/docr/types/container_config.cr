@@ -73,6 +73,9 @@ module Docr::Types
     @[JSON::Field(key: "Shell")]
     property shell : Array(String)?
 
+    @[JSON::Field(key: "ExposedPorts")]
+    property exposed_ports : Hash(String, Hash(String, String))?
+
     def initialize(
       @hostname = nil,
       @domainname = nil,
@@ -96,7 +99,8 @@ module Docr::Types
       @labels = nil,
       @stop_signal = "SIGTERM",
       @stop_timeout = 10,
-      @shell = nil
+      @shell = nil,
+      @exposed_ports = nil
     )
     end
   end

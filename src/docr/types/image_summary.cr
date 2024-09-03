@@ -26,7 +26,7 @@ module Docr::Types
     property shared_size : Int64
 
     @[JSON::Field(key: "VirtualSize")]
-    property virtual_size : Int64
+    property virtual_size : Int64?
 
     @[JSON::Field(key: "Labels")]
     property labels : Hash(String, String)?
