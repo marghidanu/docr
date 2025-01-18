@@ -15,8 +15,7 @@ jobs:
       - crystal tool format --check
 
   lint:
-    executor: docker
-    image: veelenga/ameba
+    executor: local
     commands:
       - ameba
 
