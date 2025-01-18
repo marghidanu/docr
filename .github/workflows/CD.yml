@@ -16,7 +16,7 @@ jobs:
       - name: Install Crystal
         uses: oprypin/install-crystal@v1
         with:
-          crystal: 1.10.1
+          crystal: 1.15.0
 
       - name: Linux dependencies
         run: |
