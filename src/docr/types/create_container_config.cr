@@ -32,7 +32,7 @@ module Docr::Types
       @stop_timeout = 10,
       @shell = nil,
       @host_config = nil,
-      @exposed_ports = nil
+      @exposed_ports = nil,
     )
     end
   end
