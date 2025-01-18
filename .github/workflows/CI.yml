@@ -19,13 +19,13 @@ jobs:
       - name: Install Crystal
         uses: oprypin/install-crystal@v1
         with:
-          crystal: 1.10.1
+          crystal: 1.15.0
 
       - name: Check code formatting
         run: crystal tool format --check
 
       - name: Crystal Ameba Linter
-        run: docker run -t -v $PWD/src:/src veelenga/ameba:v0.14.1
+        run: docker run -v $(pwd):/src ghcr.io/crystal-ameba/ameba:latest
 
       - name: Install dependencies
         run: shards install
