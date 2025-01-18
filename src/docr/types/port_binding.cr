@@ -12,7 +12,7 @@ module Docr::Types
 
     def initialize(
       @host_ip = nil,
-      @host_port = nil
+      @host_port = nil,
     )
     end
   end

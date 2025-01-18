@@ -29,7 +29,7 @@ module Docr::Types
       @interval = nil,
       @timeout = nil,
       @retries = nil,
-      @start_period = nil
+      @start_period = nil,
     )
     end
   end

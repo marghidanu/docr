@@ -23,7 +23,7 @@ module Docr::Types
       @username : String,
       @password : String,
       @email : String,
-      @serveraddress : String
+      @serveraddress : String,
     )
     end
 

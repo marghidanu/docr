@@ -54,7 +54,7 @@ module Docr::Types
       @ipam = nil,
       @enable_ipv6 = nil,
       @options = nil,
-      @labels = nil
+      @labels = nil,
     )
     end
   end

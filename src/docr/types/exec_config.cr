@@ -42,7 +42,7 @@ module Docr::Types
       @cmd = nil,
       @privileged = nil,
       @user = nil,
-      @working_dir = nil
+      @working_dir = nil,
     )
     end
   end
