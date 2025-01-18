@@ -19,7 +19,6 @@ module Docr::Utils
   end
 
   def self.build_context(path : String) : IO::Memory
-
     context = IO::Memory.new
     dockerignore = DockerIgnore.new(path)
 

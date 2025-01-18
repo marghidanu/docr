@@ -16,7 +16,7 @@ module Docr::Types
     def initialize(
       @nano_cp_us = nil,
       @memory_bytes = nil,
-      @pids = 0
+      @pids = 0,
     )
     end
   end

@@ -43,10 +43,10 @@ module Docr::Types
     property created : String
 
     @[JSON::Field(key: "Container")]
-    property container : String
+    property container : String?
 
     @[JSON::Field(key: "ContainerConfig")]
-    property container_config : Docr::Types::ContainerConfig
+    property container_config : Docr::Types::ContainerConfig?
 
     @[JSON::Field(key: "DockerVersion")]
     property docker_version : String

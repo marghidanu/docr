@@ -24,7 +24,7 @@ module Docr::Types
       @name,
       @driver = "local",
       @driver_opts = nil,
-      @labels = nil
+      @labels = nil,
     )
     end
   end

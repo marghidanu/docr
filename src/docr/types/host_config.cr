@@ -11,7 +11,7 @@ module Docr::Types
 
     def initialize(
       @type,
-      @config
+      @config,
     )
     end
   end
@@ -169,7 +169,7 @@ module Docr::Types
       @console_size = nil,
       @isolation = nil,
       @masked_paths = nil,
-      @readonly_paths = nil
+      @readonly_paths = nil,
     )
     end
   end

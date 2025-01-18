@@ -10,7 +10,7 @@ module Docr::Types
 
     # List of IPAM configuration options,
     @[JSON::Field(key: "Config")]
-    property config : Array(Hash(String, String))
+    property config : Array(Hash(String, String))?
 
     # Driver-specific options, specified as a map.
     @[JSON::Field(key: "Options")]

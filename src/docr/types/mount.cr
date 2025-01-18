@@ -88,7 +88,7 @@ module Docr::Types
       @consistency = nil,
       @bind_options = nil,
       @volume_options = nil,
-      @tmpfs_options = nil
+      @tmpfs_options = nil,
     )
     end
   end

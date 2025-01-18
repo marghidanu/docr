@@ -100,7 +100,7 @@ module Docr::Types
       @stop_signal = "SIGTERM",
       @stop_timeout = 10,
       @shell = nil,
-      @exposed_ports = nil
+      @exposed_ports = nil,
     )
     end
   end
