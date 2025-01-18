@@ -25,7 +25,7 @@ jobs:
         run: crystal tool format --check
 
       - name: Crystal Ameba Linter
-        run: docker run -v $(pwd):/src ghcr.io/crystal-ameba/ameba
+        run: docker run -v $(pwd):/src ghcr.io/crystal-ameba/ameba:latest
 
       - name: Install dependencies
         run: shards install
