@@ -15,7 +15,8 @@ jobs:
       - crystal tool format --check
 
   lint:
-    executor: local
+    executor: docker
+    image: ghcr.io/crystal-ameba/ameba:latest
     commands:
       - ameba
 
