@@ -23,7 +23,7 @@ module Docr::Types
     property created : Int64
 
     @[JSON::Field(key: "Ports")]
-    property ports : Array(Port)
+    property ports = [] of Port
 
     @[JSON::Field(key: "SizeRw")]
     property size_rw : Int64?
@@ -41,7 +41,7 @@ module Docr::Types
     property status : String
 
     @[JSON::Field(key: "Mounts")]
-    property mounts : Array(Docr::Types::Mount)
+    property mounts = [] of Docr::Types::Mount
   end
 end
 
