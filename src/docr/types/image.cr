@@ -34,7 +34,7 @@ module Docr::Types
     property repo_digests : Array(String)
 
     @[JSON::Field(key: "Parent")]
-    property parent : String
+    property parent : String?
 
     @[JSON::Field(key: "Comment")]
     property comment : String
@@ -49,10 +49,10 @@ module Docr::Types
     property container_config : Docr::Types::ContainerConfig?
 
     @[JSON::Field(key: "DockerVersion")]
-    property docker_version : String
+    property docker_version : String?
 
     @[JSON::Field(key: "Author")]
-    property author : String
+    property author : String?
 
     @[JSON::Field(key: "Config")]
     property config : Docr::Types::ContainerConfig
