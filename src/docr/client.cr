@@ -8,10 +8,12 @@ require "./errors"
 module Docr
   # Define the Docr::Client class for making HTTP requests to the Docker API.
   class Client
+    DEFAULT_DOCKER_HOST = "/var/run/docker.sock"
+
     # Initializes a new instance of the Docr::Client class.
-    def initialize
+    def initialize(addr = DEFAULT_DOCKER_HOST)
       # Create a UNIX socket connection to the Docker API.
-      socket = UNIXSocket.new("/var/run/docker.sock")
+      socket = UNIXSocket.new(addr)
       @client = HTTP::Client.new(socket)
     end
 
